@@ -37,6 +37,14 @@ module.exports = async (req, res) => {
         return;
     }
 
+    if (!upstream.ok) {
+        const errText = await upstream.text();
+        console.error('Groq error', upstream.status, errText);
+        res.status(upstream.status).setHeader('Content-Type', 'application/json');
+        res.end(errText);
+        return;
+    }
+
     res.status(upstream.status);
     res.setHeader('Content-Type', upstream.headers.get('content-type') || 'text/event-stream');
     res.setHeader('Cache-Control', 'no-store');
