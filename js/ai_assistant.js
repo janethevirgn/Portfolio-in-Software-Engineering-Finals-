@@ -9,11 +9,10 @@
    - Type  /status  in the chat to run a connection check.
    =================================================================== */
 (() => {
-    const GROQ_API_KEY = "YOUR_GROQ_API_KEY_HERE";
-    const CONFIG = Object.assign({
-        endpoint: GROQ_URL,               
-        apiKey: GROQ_API_KEY,            
-        model: 'llama-3.3-70b-versatile', 
+        const CONFIG = Object.assign({
+        endpoint: '/api/groq',
+        apiKey: '',
+        model: 'llama-3.3-70b-versatile',
         temperature: 0.6,
         maxTokens: 700,
         maxHistory: 12,
